@@ -101,5 +101,5 @@ export class GroupService
     }
     console.log(errorMessage);
     return throwError(errorMessage);
-  }
+  } // blarg
 }
