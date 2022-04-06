@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+
+<!--<body bgcolor="orange">
+
+<h1>
+<b>Create A Group</b></h1>
+<hr color="black"><br><br><br>
+<hr color="black"><br><br><br>
+
+
+<center><form action="">
+  <label for="group">Name of Group:</label><br>
+  <input type="text" id="group" name="group" value=""><br><br>
+  <label for="interest">Group Interest:</label><br>
+  <input type="text" id="interest" name="interest" value=""><br><br>
+  <label for="name">Created By:</label><br>
+  <input type="text" id="name" name="name" value=""><br><br>
+  <label for="date">Date Created:</label><br>
+  <input type="text" id="date" name="date" value=""><br><br>
+  <label for="email">Creators Email:</label><br>
+  <input type="text" id="email" name="email" value=""><br><br>
+  <label for="creator">Creator's Home Page:</label><br>
+  <input type"text" id="creator" name="creator" placeholder="URL"><br><br>
+  <label for="subject">Details for the Group:</label><br>
+  <input type="textarea" id="subject" name="subject" placeholder="Write something.." style="height:100px"><br><br>
+  <input type="submit" value="Create"> <input type="submit" value="Home">
+</form></center> -->
+
+
+<form class="createGroupForm" [formGroup]="groupForm" (ngSubmit)="bindModel()">
+    <fieldset>
+        <div class="form-control">
+            <label>Group Name</label>
+            <input type="text" class="form-control" formControlName="groupName">
+        </div>
+        <div class="form-control">
+            <label>Group Description</label>
+            <input type="text" class="form-control" formControlName="description">
+        </div>
+        <div class="doesStuff">
+            <input type="submit" class="btn btn-success createGroupSubmit">
+        </div>
+    </fieldset>
+</form>
+
+
+<br><br><br>
+<hr color="black">
+<br><br>
+
+
+
+<!--</body>-->
+</html>
