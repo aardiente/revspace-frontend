@@ -28,7 +28,8 @@ export class CreateGroupComponent implements OnInit {
     this.groupForm = this.formBuilder.group(
       {
       groupName: ['', Validators.required, Validators.minLength(3)],
-      description: ['', Validators.required, Validators.minLength(3)]  
+      description: ['', Validators.required, Validators.minLength(3)],
+      interests: ['', Validators.required, Validators.minLength(3)]
     });
   }
 
@@ -39,7 +40,7 @@ export class CreateGroupComponent implements OnInit {
     let curUser:User = this.loginService.getLoginInfo().user;
     console.log("Binding -> " + curUser);
 
-    let info:GroupInfo = new GroupInfo(-1, this.groupForm.value[0], this.groupForm.value[1], curUser);
+    let info:GroupInfo = new GroupInfo(-1, this.groupForm.value[0], this.groupForm.value[1], this.groupForm.value[2], curUser);
 
     console.log("Info -> " + info);
     let thread:GroupThread = new GroupThread(-1, info, [curUser]);
@@ -52,6 +53,21 @@ export class CreateGroupComponent implements OnInit {
                (data) => tempThread = data), err => this.errorMsg = err;
 
     console.log("Result of addGroup(): " + tempThread); // Check if an object exists in memory
+    this.printGroup(tempThread);
+  }
+  printGroup(group:GroupThread)
+  {
+    console.log("GroupThread Obj.");
+    console.log(group.groupId);
+    console.log("-----------------");
+    console.log("Group Info");
+    console.log(group.groupInfo.groupName);
+    console.log(group.groupInfo.description);
+    console.log(group.groupInfo.interests);
+    console.log(group.groupInfo.dateCreated);
+    console.log("-----------------");
+    console.log("Owner");
+    console.log(group.groupInfo.owner.email);
   }
 
 }
