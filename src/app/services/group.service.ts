@@ -39,7 +39,7 @@ export class GroupService
       this.backendService.getBackendURL() + uriMapping,
           groupObj,
           {headers: this.postHeaders}
-      ).pipe(retry(1), catchError(this.errorHandle));
+      ).pipe(retry(0), catchError(this.errorHandle));
   }
 
   /**************************************************************************/
