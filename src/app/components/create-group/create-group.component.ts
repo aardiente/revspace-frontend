@@ -26,7 +26,7 @@ export class CreateGroupComponent implements OnInit {
   ngOnInit(): void 
   {
     this.groupForm = this.formBuilder.group(
-      {
+    {
       groupName: ['', Validators.required, Validators.minLength(3)],
       description: ['', Validators.required, Validators.minLength(3)],
       interests: ['', Validators.required, Validators.minLength(3)]
@@ -37,13 +37,17 @@ export class CreateGroupComponent implements OnInit {
   {
     console.log("Binding CreateGroup to model");
 
+    console.log(this.groupForm.value['description']);
+
     let curUser:User = this.loginService.getLoginInfo().user;
     console.log("Binding -> " + curUser);
-
-    let info:GroupInfo = new GroupInfo(-1, this.groupForm.value[0], this.groupForm.value[1], this.groupForm.value[2], curUser);
+    console.log("GroupName: " + this.groupForm.get('groupName').value);
+    console.log("description: " + this.groupForm.get('description').value);
+    console.log("interests: " + this.groupForm.get('interests').value);
+    let info:GroupInfo = new GroupInfo(this.groupForm.get('groupName').value, this.groupForm.get('description').value, this.groupForm.get('interests').value, curUser);
 
     console.log("Info -> " + info);
-    let thread:GroupThread = new GroupThread(-1, info, [curUser]);
+    let thread:GroupThread = new GroupThread(info, [curUser]);
 
     console.log("Thread -> " + thread);
 
@@ -64,7 +68,7 @@ export class CreateGroupComponent implements OnInit {
     console.log(group.groupInfo.groupName);
     console.log(group.groupInfo.description);
     console.log(group.groupInfo.interests);
-    console.log(group.groupInfo.dateCreated);
+    //console.log(group.groupInfo.dateCreated);
     console.log("-----------------");
     console.log("Owner");
     console.log(group.groupInfo.owner.email);

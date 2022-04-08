@@ -7,9 +7,9 @@ export class GroupThread
     groupInfo!:GroupInfo;
     groupMembers:User[] = [];
 
-    public constructor(id:number, info:GroupInfo, userList:User[])
+    public constructor(info:GroupInfo, userList:User[])
     {
-        this.groupId = id; // passed value doesnt matter
+       // this.groupId = id; // passed value doesnt matter
         this.groupInfo = info; // information about the group and its owner
         this.groupMembers = userList; // list of all members
     }
